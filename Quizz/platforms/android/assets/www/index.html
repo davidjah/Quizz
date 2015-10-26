@@ -13,8 +13,12 @@
         var x=0;
 		var y=0;
 		while(x<10){
-			$('#cerebro').animate({width:"+=1%"});
+			$('#cerebro').animate({width:"+=1%", heigth:"+=1%", marginTop:"-=1%", marginLeft:"-=1%"});
 			x++;
+		}
+		while(x==10 && y<10){
+			$('#cerebro').animate({width:"-=1%", heigth:"-=1%", marginTop:"+=1%", marginLeft:"+=1%"});
+			y++;
 		}
     });
 </script>
