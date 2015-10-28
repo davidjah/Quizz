@@ -13,19 +13,19 @@
 		loop();
 	});
 	function loop() {
-		$('#cerebro').animate({width: '+=1%',  height:'+=1%', marginLeft:'-=1%', marginTop:'-=1%'},
+		$('#imgC').animate({width: '+=1%',  height:'+=1%'},
 		1000, 'linear', loop2);
 	}
 	function loop2() {
-		$('#cerebro').animate({width: '-=1%', height:'-=1%', marginLeft:'+=1%', marginTop:'+=1%'},
+		$('#imgC').animate({width: '-=1%', height:'-=1%'},
 		1000, 'linear', loop);
 	}	
 	
 </script>
 <div data-role="page" id="inicio">
 <div data-role="header" id="titulo"><img src="img/logo.jpg"/></div>
-	<div data-role="content" id="cerebro"><img src="img/cerebro.png"/></div>
-	<a href="#juego" data-role="button">JUGAR</a>
+	<div data-role="content" id="cerebro"><img id="imgC" src="img/cerebro.png"/></div>
+	<a id="btn" href="#juego" data-role="button" data-position="fixed">JUGAR</a>
 </div>
 
 <div data-role="page" id="juego">
