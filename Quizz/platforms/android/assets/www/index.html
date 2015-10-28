@@ -14,6 +14,23 @@
 	});
 	
 </script>
+<script>
+	var imagenes=new Array('img/0.png','img/1.png','img/2.png','img/3.png','img/4.png','img/5.png');
+	
+    function rotarImagenes()
+    {
+        var index=Math.floor((Math.random()*imagenes.length));
+ 
+        document.getElementById("imagen").src=imagenes[index];
+    }
+ 
+    onload=function()
+    {
+        rotarImagenes();
+ 
+        setInterval(rotarImagenes,100);
+    }
+</script>
 <div data-role="page" id="inicio">
 <div data-role="header" id="titulo"><img src="img/logo.jpg"/></div>
 	<div data-role="content" id="cerebro"><img id="imgC" src="img/cerebro.png"/></div>
@@ -21,7 +38,7 @@
 </div>
 
 <div data-role="page" id="juego">
-<h1>hola</h1>
+<div data-role="content" id="contImg"><img src="" id="imagen"></div>
 </div>
 
 	
