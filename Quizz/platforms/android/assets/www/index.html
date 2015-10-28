@@ -10,22 +10,14 @@
 <body>
 <script>	
 	$(document).ready(function(e) {		
-		loop();
-	});
-	function loop() {
-		$('#imgC').animate({width: '+=1%',  height:'+=1%'},
-		1000, 'linear', loop2);
-	}
-	function loop2() {
-		$('#imgC').animate({width: '-=1%', height:'-=1%'},
-		1000, 'linear', loop);
-	}	
+	
+	});	
 	
 </script>
 <div data-role="page" id="inicio">
 <div data-role="header" id="titulo"><img src="img/logo.jpg"/></div>
-	<div data-role="content" id="cerebro"><img id="imgC" src="img/cerebro.png"/></div>
-	<a id="btn" href="#juego" data-role="button" data-position="fixed">JUGAR</a>
+	<div data-role="content" id="cerebro"><img id="imgC" src="img/cerebroAnimadoSF.gif"/></div>
+	<a id="btn" href="#juego" data-role="footer" data-position="fixed">JUGAR</a>
 </div>
 
 <div data-role="page" id="juego">
