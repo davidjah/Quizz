@@ -10,7 +10,7 @@
 <body>
 <script>	
 	$(document).ready(function(e) {		
-	
+		setInterval(function(){$('#cerebro').animate({width:"+=20%", marginLeft:"-=10%"},1000).animate({width:"-=20%", marginLeft:"+=10%"},1000)},10);
 	});
 	
 </script>
@@ -25,12 +25,6 @@
         document.getElementById("imagen").src=imagenes[index];
     }
 	
-	var myVar;
-
-	function myFunction() {
-		myVar = setTimeout(pregunta, 3000);
-	}
-
 	onload=function(){		
 		rotarImagenes(); 
 		setInterval(rotarImagenes,10);						
@@ -41,10 +35,10 @@
 		var dImg=document.getElementById("imagen");
 		dCont.removeChild(dImg);
 		$('#contImg').append('<img id="imagen2"/>');
-		$('#imagen2').attr("src", "img/"+index+".png");		
+		$('#imagen2').attr("src", "img/"+index+".png");
+		setInterval(function(){$('#contImg').animate({marginLeft:"+=1%"},100).animate({marginLeft:"-=1%"},100)},10);		
+		//añadir btn
 	}
-	
-	
     
 </script>
 <div data-role="page" id="inicio">
@@ -54,7 +48,7 @@
 </div>
 
 <div data-role="page" id="juego">
-<div data-role="content" id="contImg" class="contImg" onClick="parar()"><img src="" id="imagen"></div>
+<div data-role="content" id="contImg" onClick="parar()"><img src="" id="imagen"></div>
 </div>
 
 	

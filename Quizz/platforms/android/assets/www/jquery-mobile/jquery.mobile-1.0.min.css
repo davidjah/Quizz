@@ -26,5 +26,20 @@
     height:auto;
 }
 #btn{
-	margin-bottom:0%;
-	}
+	position:fixed;
+	bottom:0;
+	width:100%;
+}
+	
+#contImg{
+	margin-top:10%;
+	margin-left:23%;
+	width:55%;
+}
+#contImg img{
+	border:none;
+    padding:0;
+    margin:0;
+    width:100%;
+    height:auto;
+}
