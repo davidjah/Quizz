@@ -15,21 +15,37 @@
 	
 </script>
 <script>
-	var imagenes=new Array('img/0.png','img/1.png','img/2.png','img/3.png','img/4.png','img/5.png');
 	
-    function rotarImagenes()
-    {
-        var index=Math.floor((Math.random()*imagenes.length));
- 
+	var imagenes=new Array('img/0.png','img/1.png','img/2.png','img/3.png','img/4.png','img/5.png');
+	var index;
+	var c=0;
+	
+    function rotarImagenes(){
+        index=Math.floor((Math.random()*imagenes.length)); 
         document.getElementById("imagen").src=imagenes[index];
     }
- 
-    onload=function()
-    {
-        rotarImagenes();
- 
-        setInterval(rotarImagenes,100);
-    }
+	
+	var myVar;
+
+	function myFunction() {
+		myVar = setTimeout(pregunta, 3000);
+	}
+
+	onload=function(){		
+		rotarImagenes(); 
+		setInterval(rotarImagenes,10);						
+	}
+	
+	function parar(){		
+		var dCont=document.getElementById("contImg");
+		var dImg=document.getElementById("imagen");
+		dCont.removeChild(dImg);
+		$('#contImg').append('<img id="imagen2"/>');
+		$('#imagen2').attr("src", "img/"+index+".png");		
+	}
+	
+	
+    
 </script>
 <div data-role="page" id="inicio">
 <div data-role="header" id="titulo"><img src="img/logo.jpg"/></div>
@@ -38,7 +54,7 @@
 </div>
 
 <div data-role="page" id="juego">
-<div data-role="content" id="contImg"><img src="" id="imagen"></div>
+<div data-role="content" id="contImg" class="contImg" onClick="parar()"><img src="" id="imagen"></div>
 </div>
 
 	
