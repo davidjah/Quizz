@@ -10,7 +10,7 @@
 <body>
 <script>	
 	$(document).ready(function(e) {		
-		setInterval(function(){$('#cerebro').animate({width:"+=20%", marginLeft:"-=10%", marginTop:"-=10%"},1000).animate({width:"-=20%", marginLeft:"+=10%", marginTop:"+=10%"},1000)},10);
+		setInterval(function(){$('#cerebro').animate({width:"+=30%", marginLeft:"-=15%", marginTop:"-=15%"},1000).animate({width:"-=30%", marginLeft:"+=15%", marginTop:"+=15%"},1000)},10);
 	});
 	
 </script>
@@ -27,7 +27,8 @@
 	
 	onload=function(){		
 		rotarImagenes(); 
-		setInterval(rotarImagenes,10);						
+		setInterval(rotarImagenes,10);	
+		$('#juego').append('<a id="btn2" href="#juego" data-role="button">EMPEZAR</a>');						
 	}
 	
 	function parar(){		
@@ -36,7 +37,8 @@
 		dCont.removeChild(dImg);
 		$('#contImg').append('<img id="imagen2"/>');
 		$('#imagen2').attr("src", "img/"+index+".png");
-		setInterval(function(){$('#contImg').animate({marginLeft:"+=1%"},100).animate({marginLeft:"-=1%"},100)},10);		
+		setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);
+			
 		//añadir btn
 	}
     
