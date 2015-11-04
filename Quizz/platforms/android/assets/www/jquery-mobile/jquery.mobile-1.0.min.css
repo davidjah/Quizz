@@ -30,6 +30,10 @@
 	bottom:0;
 	width:100%;
 }
+
+#btn2{
+	display:none;
+	}
 	
 #contImg{
 	margin-top:40%;

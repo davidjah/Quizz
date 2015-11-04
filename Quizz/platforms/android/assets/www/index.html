@@ -29,7 +29,7 @@
 	
 	onload=function(){		
 		rotarImagenes(); 
-		setInterval(rotarImagenes,10);										
+		setInterval(rotarImagenes,10);												
 	}
 	
 	function parar(){		
@@ -39,9 +39,9 @@
 		dCont.removeChild(dImg);
 		$('#contImg').append('<img id="imagen2"/>');
 		$('#imagen2').attr("src", "img/"+index+".png");
-		$('#juego').append('<a id="btn2" data-role="button" onClick="add()">EMPEZAR</a>');
 		setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);
-		document.getElementById('btn2').setAttribute("href","#quiz");		
+		document.getElementById('btn2').setAttribute("href","#quiz");
+		document.getElementById('btn2').style.display='block';		
 	};
 	
 	var preguntas=new Array('pregunta 1','pregunta 2','pregunta 3','pregunta 4');
@@ -92,7 +92,7 @@
 
 <div data-role="page" id="juego">
 <div data-role="content" id="contImg" onClick="parar()"><img src="" id="imagen"></div>
-<!--<a id="btn2" data-role="button" onClick="add()">EMPEZAR</a>-->
+<a id="btn2" data-role="button" onClick="add()">EMPEZAR</a>
 </div>
 
 <div data-role="page" id="quiz">
