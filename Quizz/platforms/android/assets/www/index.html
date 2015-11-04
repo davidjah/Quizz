@@ -39,31 +39,48 @@
 		dCont.removeChild(dImg);
 		$('#contImg').append('<img id="imagen2"/>');
 		$('#imagen2').attr("src", "img/"+index+".png");
+		$('#juego').append('<a id="btn2" data-role="button" onClick="add()">EMPEZAR</a>');
 		setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);
 		document.getElementById('btn2').setAttribute("href","#quiz");		
 	};
 	
 	var preguntas=new Array('pregunta 1','pregunta 2','pregunta 3','pregunta 4');
 	var soluciones=new Array();//este asociativo
-	var opciones=new Array('v','f','f');
+	var opciones=new Array();
 	
-	PregSol['pregunta 1']='v';
-	PregSol['pregunta 2']='v';
-	PregSol['pregunta 3']='v';
-	PregSol['pregunta 4']='v';
 	
-	function add(){
-		i=Math.floor((Math.random()*preguntas.length));
-		i2=Math.floor((Math.random()*opciones.length));
-		$('#quiz').append('<h1 data-role="header">'+preguntas[i]+'</h1>');
-		$('#quiz').append('<a data-role="button">'+opciones[i2]+'</a>');
-		opciones.splice(i2,1);//primer numero indica a partir de que indice queremos borrar y el segundo cuantos indices queremos borrar
-		i3=Math.floor((Math.random()*opciones.length));
-		$('#quiz').append('<a data-role="button">'+opciones[i3]+'</a>');
-		opciones.splice(i3,1);
-		$('#quiz').append('<a data-role="button">'+opciones[0]+'</a>');
-		
+	soluciones['pregunta 1']='v';
+	soluciones['pregunta 2']='v';
+	soluciones['pregunta 3']='v';
+	soluciones['pregunta 4']='v';
+	
+	opciones['pregunta 1']="v,f,f";
+	opciones['pregunta 2']="v,f,f";
+	opciones['pregunta 3']="v,f,f";
+	opciones['pregunta 4']="v,f,f";
+	
+	var i=Math.floor((Math.random()*preguntas.length));
+	
+	function ok(e){
+		if(e.name==soluciones[""+preguntas[i]]){
+			alert("bien");
+		}else{
+			alert("mal");
+		}
 	}
+	
+	function add(){			
+		$('#quiz').append('<h1 data-role="header">'+preguntas[i]+'</h1>');
+		preguntas.splice(i,1);//primer numero indica a partir de que indice queremos borrar y el segundo cuantos indices queremos borrar
+		$('#quiz').append('<a onClick="ok(this)" id="1" data-role="button">'+opciones[""+preguntas[i]].split(",")[0]+'</a>');
+		$('#1').attr("name",""+opciones[""+preguntas[i]].split(",")[0]);		
+		$('#quiz').append('<a onClick="ok(this)" id="2" data-role="button">'+opciones[""+preguntas[i]].split(",")[1]+'</a>');
+		$('#2').attr("name",""+opciones[""+preguntas[i]].split(",")[1]);
+		$('#quiz').append('<a onClick="ok(this)" id="3" data-role="button">'+opciones[""+preguntas[i]].split(",")[2]+'</a>');
+		$('#3').attr("name",""+opciones[""+preguntas[i]].split(",")[2]);
+	}
+		
+		
 	
 	
 </script>
@@ -75,11 +92,10 @@
 
 <div data-role="page" id="juego">
 <div data-role="content" id="contImg" onClick="parar()"><img src="" id="imagen"></div>
-<a id="btn2" data-role="button" onClick="add()">EMPEZAR</a>
+<!--<a id="btn2" data-role="button" onClick="add()">EMPEZAR</a>-->
 </div>
 
 <div data-role="page" id="quiz">
-	<!--<h1 id="preg" data-role="header"></h1><a id="r1" data-role="button"></a><a id="r2" data-role="button"></a><a id="r3" data-role="button"></a>-->
 </div>
 
 
