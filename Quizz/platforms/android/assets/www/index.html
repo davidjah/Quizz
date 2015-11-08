@@ -6,36 +6,39 @@
 <link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
 <script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+
 </head> 
-<body>
-<!--<script>	
-	$(document).ready(function(e) {		
-		setInterval(function(){$('#cerebro').animate({width:"+=30%", marginLeft:"-=15%", marginTop:"-=15%"},1000).animate({width:"-=30%", marginLeft:"+=15%", marginTop:"+=15%"},1000)},10);
-	});	
-</script>-->
+<body onLoad="play()">
 <script>
 	
 	var imagenes=new Array('img/0.png','img/1.png','img/2.png','img/3.png','img/0-g.png','img/1-g.png','img/2-g.png','img/3-g.png');
 	var index;
 	var c=0;
 		
-    function rotarImagenes(){		
+    function rotarImagenes(){	
+		
         index=Math.floor((Math.random()*imagenes.length)); 
         document.getElementById("imagen").src=imagenes[index];
+		
     }
 	
 	function refreshPage(){
+		
 		jQuery.mobile.changePage(window.location.href, {
 			allowSamePageTransition: true,
 			transition: 'none',
 			reloadPage: true
 		});
+		
 	}
 	
-	onload=function(){
+	function play(){
+		
 		refreshPage();
 		rotarImagenes(); 
-		setInterval(rotarImagenes,100);												
+		setInterval(rotarImagenes,100);
+		setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);
+														
 	}	
 	
 	function parar(){
@@ -44,17 +47,15 @@
 		var dImg=document.getElementById("imagen");
 		dCont.removeChild(dImg);
 		$('#contImg').append('<img id="imagen2"/>');
-		$('#imagen2').attr("src", ""+imagenes[index]);
-		//setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);
-		
+		$('#imagen2').attr("src", ""+imagenes[index]);		
 		document.getElementById('btn2').setAttribute("href","#quiz");		
 		document.getElementById('btn2').style.display='block';
+		
 	}
 	
 	var preguntas=new Array('pregunta 1','pregunta 2','pregunta 3','pregunta 4');
 	var soluciones=new Array();//este asociativo
-	var opciones=new Array();
-	
+	var opciones=new Array();	
 	
 	soluciones['pregunta 1']='v';
 	soluciones['pregunta 2']='v';
@@ -69,19 +70,24 @@
 	var i=Math.floor((Math.random()*preguntas.length));
 	
 	function ok(e){
+		
 		preguntas.splice(i,1);//primer numero indica a partir de que indice queremos borrar y el segundo cuantos indices queremos borrar
+		
 		if(e.name==soluciones[""+preguntas[i]]){
+			
 			$('#resul').append('<h1 data-role="header">CORRECTO</h1>');
 			$('#resul').append('<a href="#juego" data-role="button">CONTINUAR</h1>');
 					
 		}else{
+			
 			$('#resul').append('<h1 data-role="header">FALSO</h1>');
 			$('#resul').append('<a href="#juego" data-role="button">CONTINUAR</h1>');
 			
 		}
 	}
 	
-	function add(){			
+	function add(){	
+			
 		$('#quiz').append('<h1 data-role="header">'+preguntas[i]+'</h1>');		
 		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="1" data-role="button">'+opciones[""+preguntas[i]].split(",")[0]+'</a>');
 		$('#1').attr("name",""+opciones[""+preguntas[i]].split(",")[0]);		
@@ -89,18 +95,18 @@
 		$('#2').attr("name",""+opciones[""+preguntas[i]].split(",")[1]);
 		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="3" data-role="button">'+opciones[""+preguntas[i]].split(",")[2]+'</a>');
 		$('#3').attr("name",""+opciones[""+preguntas[i]].split(",")[2]);
+		
 	}
 	
 </script>
-<!--<div data-role="page" id="inicio">
-<div data-role="header" id="titulo"><img src="img/logo.jpg"/></div>
-	<div data-role="content" id="cerebro"><img id="imgC" src="img/cerebro.png"/></div>
-	<a id="btn" href="#juego" onClick="play()" data-role="button">JUGAR</a>
-</div>-->
 
 <div data-role="page" id="juego">
+
+<div data-role="header" id="titulo"><img src="img/logo.jpg"/></div>
+<div data-role="fieldcontain" id="cerebrosDone"><img src="img/0-g.png"/><img src="img/1-g.png"/><img src="img/2-g.png"/><img src="img/3-g.png"/></div>
 <div data-role="content" id="contImg" onClick="parar()"><img src="" id="imagen"></div>
 <a id="btn2" data-role="button" onClick="add()">EMPEZAR</a>
+
 </div>
 
 <div data-role="page" id="quiz">
@@ -109,7 +115,6 @@
 <div data-role="page" id="resul">
 
 </div>
-
 
 </body>
 </html>
