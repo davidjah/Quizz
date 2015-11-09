@@ -3,8 +3,8 @@
 
 #titulo{
 	margin-top:10%;
-	margin-left:23%;
-	width:55%;
+	margin-left:10%;
+	width:80%;
 }
 #titulo img{
 	border:none;
@@ -15,14 +15,14 @@
 }
 #cerebrosDone{
 	margin-top:10%;
-	margin-left:23%;
-	width:55%;
+	margin-left:10%;
+	width:80%;
 }
 #cerebrosDone img{
 	border:none;
     padding:0;
     margin:0;
-    width:25%;
+    width:20%;
     height:auto;
 }
 #cerebro{
@@ -37,7 +37,7 @@
     width:100%;
     height:auto;
 }
-#btn, #btn2{
+#btn, #btn2, #btn3{
 	position:fixed;
 	bottom:0;
 	width:100%;
@@ -47,13 +47,12 @@
 	display:none;
 	}
 	
-#contImg{
+#contImg, #cerebroTema{
 	margin-top:10%;
-	margin-left:25%;
-	margin-right:25%;
-	width:50%;
+	margin-left:15%;
+	width:80%;
 }
-#contImg img{
+#contImg img, #cerebroTema img{
 	border:none;
     padding:0;
     margin:0;
