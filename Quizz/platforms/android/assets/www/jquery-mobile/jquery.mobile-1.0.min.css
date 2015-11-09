@@ -52,7 +52,7 @@
 	
 #contImg, #cerebroTema{
 	margin-top:10%;
-	margin-left:15%;
+	margin-left:5%;
 	width:80%;
 }
 #contImg img, #cerebroTema img{
@@ -107,9 +107,9 @@ table{
 	display:none;
 	float:left;
 	height:100%;
-	width:10%;
+	width:20%;
 	margin-left:2%;
-	
+	background-color: rgba(0,0,0,0);
 }
 #multimedia, #recursos, #enfermedades, #neurociencia, #anatomia{
 	display:none;
