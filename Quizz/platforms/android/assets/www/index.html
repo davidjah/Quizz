@@ -1,178 +1,154 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+
 <html>
-<head>
-<meta charset="utf-8">
-<title>Aplic. Web de jQuery Mobile</title>
-<link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Be|Brain</title>
+        <link href="jquery-mobile/jquery.mobile-1.0.min.css" rel="stylesheet" type="text/css"/>
 <script src="jquery-mobile/jquery-1.6.4.min.js" type="text/javascript"></script>
 <script src="jquery-mobile/jquery.mobile-1.0.min.js" type="text/javascript"></script>
-
-</head> 
-<body onLoad="play()">
-<script>
-	
-	var imagenes=new Array('img/0.png','img/0-g.png','img/1.png','img/1-g.png','img/2.png','img/2-g.png','img/3.png','img/3-g.png');//array con la imagenes de todos los cerebros.
-	var index;//
-	var i;
-	var preguntas=new Array('pregunta 1','pregunta 2','pregunta 3','pregunta 4','pregunta 5');//array de preguntas
-	var soluciones=new Array();//array con las soluciones a cada pregunta
-	var opciones=new Array();//array de opciones de respuesta	
-	
-	soluciones['pregunta 1']='a';
-	soluciones['pregunta 2']='b';
-	soluciones['pregunta 3']='c';
-	soluciones['pregunta 4']='d';
-	soluciones['pregunta 5']='e';
-	
-	opciones['pregunta 1']="a,b,c";
-	opciones['pregunta 2']="b,c,d";
-	opciones['pregunta 3']="c,d,e";
-	opciones['pregunta 4']="d,e,f";
-	opciones['pregunta 5']="e,f,g";
-		
-    function rotarImagenes(){
-        index=Math.floor((Math.random()*imagenes.length)); 
-        document.getElementById("imagen").src=imagenes[index];		
-    }
-	
-	function refreshPage(){
-		
-		jQuery.mobile.changePage(window.location.href, {
-			allowSamePageTransition: true,
-			transition: 'none',
-			reloadPage: true
-		});
-		
-	}
-	
-	function play(){
-		
-		refreshPage();
-		rotarImagenes(); 
-		setInterval(rotarImagenes,1000);
-		setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);
-																
-	}	
-	
-	function parar(){
-		$(document.body).append('<div data-role="page" id="quiz"></div>');
-		$(document.body).append('<div data-role="page" id="resul"></div>');
-		
-		var dCont=document.getElementById("contImg");
-		var dImg=document.getElementById("imagen");
-		
-		dCont.removeChild(dImg);
-		
-		$('#contImg').append('<img id="imagen2"/>');
-		$('#imagen2').attr("src", ""+imagenes[index]);
-		$('#imgCere').attr("src", ""+imagenes[index]);
-		setInterval(function(){$('#cerebroTema').animate({marginTop:"+=30px" },300).animate({marginTop:"-=30px"},500)},10);
-		
-		if(index==0 || index==1){
-			document.getElementById("tituloTema").innerHTML="AZUL";
-		}else if(index==2 || index==3){
-			document.getElementById("tituloTema").innerHTML="AMARILLO";
-		}else if(index==4 || index==5){
-			document.getElementById("tituloTema").innerHTML="VERDE";
-		}else if(index==6 || index==7){
-			document.getElementById("tituloTema").innerHTML="ROJO";
-		}
-		
-		document.getElementById('btn2').style.display='block';		
-	}
-	
-	function elimRes(){
-		
-		document.body.removeChild(document.getElementById("resul"));
-		
-		}
-	
-	
-	function ok(e){
+        <script>
 				
-		if(e.name==soluciones[""+$("#preg").html()]){
+        	$(document).ready(function() {
+				
+				$('#premenu').click(function(){
+					$('#premenu').hide();
+					$('#multimedia').hide();
+					$('#recursos').hide();
+					$('#neurociencia').hide();
+					$('#enfermedades').hide();					
+					$('#anatomia').hide();
+					$('#menu').toggle(100);
+				});
+				$('#twitter').mouseup(function(){
+					window.open(																										'https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fstatic.parastorage.com%2Fservices%2Fsanta%2F1.689.11%2Fstatic%2Fexternal%2Ftwfollow.html%3Falign%3Dleft%26href%3Dhttps%253A%252F%252Ftwitter.com%252FbebrainNeuro%26lang%3Den%26screen_name%3DbebrainNeuro%26show_count%3Dfalse%26show_screen_name%3Dtrue&screen_name=bebrainNeuro&tw_p=followbutton', '_blank');
+					});
+				
+				$('#botonI').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();
+					window.open('http://www.be-brain.org/', '_blank');
+				});
+				$('#botonM').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();
+					$('#multimedia').toggle(100);
+				});
+				$('#botonR').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();
+					$('#recursos').toggle(100);
+				});
+				$('#botonNo').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();
+					window.open('http://www.be-brain.org/#!articulos/c6hq', '_blank');
+				});
+				$('#botonA').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();					
+					$('#anatomia').toggle(100);
+					//window.open('http://www.be-brain.org/#!anatomia/cjg9', '_blank');
+				});
+				$('#botonE').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();
+					$('#enfermedades').toggle(100);
+				});
+				$('#botonNe').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();
+					$('#neurociencia').toggle(100);
+				});
+				$('#botonC').mouseup(function(){
+					$('#premenu').show();
+					$('#menu').hide();										
+				});
+            });
 			
-			document.body.removeChild(document.getElementById("quiz"));
-			$('#resul').append('<h1 data-role="header">CORRECTO</h1>');
-			$('#resul').append('<a href="#juego" onClick="elimRes()" data-role="button">CONTINUAR</h1>');
 			
-			if(document.getElementById("imgCere").getAttribute("src")=="img/0-g.png"){//estos if te dan el cerebro del tema correspondiente si lo aciertas
-				$('#i0').attr("src", "img/0-g.png");
-			}
-			if(document.getElementById("imgCere").getAttribute("src")=="img/1-g.png"){
-				$('#i1').attr("src", "img/1-g.png");
-			}
-			if(document.getElementById("imgCere").getAttribute("src")=="img/2-g.png"){
-				$('#i2').attr("src", "img/2-g.png");
-			}
-			if(document.getElementById("imgCere").getAttribute("src")=="img/3-g.png"){
-				$('#i3').attr("src", "img/3-g.png");
-			}
-					
-		}else{
-			
-			document.body.removeChild(document.getElementById("quiz"));
-			$('#resul').append('<h1 data-role="header">FALSO</h1>');
-			$('#resul').append('<a href="#juego" onClick="elimRes()" data-role="button">CONTINUAR</h1>');
-			
-			if(document.getElementById("imgCere").getAttribute("src")=="img/0-g.png"){//estos if te quitan el cerebro del tema correspondiente si lo has conseguido, caes de nuevo y fallas
-				$('#i0').attr("src", "img/cn.png");
-			}
-			if(document.getElementById("imgCere").getAttribute("src")=="img/1-g.png"){
-				$('#i1').attr("src", "img/cn.png");
-			}
-			if(document.getElementById("imgCere").getAttribute("src")=="img/2-g.png"){
-				$('#i2').attr("src", "img/cn.png");
-			}
-			if(document.getElementById("imgCere").getAttribute("src")=="img/3-g.png"){
-				$('#i3').attr("src", "img/cn.png");
-			}
-			
-		}
-	}
-	
-	function add(){//este metodo añade una pregunta aleatoria
-		
-		i=Math.floor(Math.random()*preguntas.length);
-					
-		$('#quiz').append('<h1 id="preg" data-role="header">'+preguntas[i]+'</h1>');		
-		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="1" data-role="button">'+opciones[""+preguntas[i]].split(",")[0]+'</a>');
-		$('#1').attr("name",""+opciones[""+preguntas[i]].split(",")[0]);		
-		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="2" data-role="button">'+opciones[""+preguntas[i]].split(",")[1]+'</a>');
-		$('#2').attr("name",""+opciones[""+preguntas[i]].split(",")[1]);
-		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="3" data-role="button">'+opciones[""+preguntas[i]].split(",")[2]+'</a>');
-		$('#3').attr("name",""+opciones[""+preguntas[i]].split(",")[2]);
-		
-		preguntas.splice(i,1);//primer numero indica a partir de que indice queremos borrar y el segundo cuantos indices queremos borrar
-		
-	}
-	
-</script>
-
-<div data-role="page" id="juego">
-
-<div data-role="header" id="titulo"><img src="img/logo.jpg"/></div>
-
-<div data-role="content" id="contImg" onClick="parar()"><img src="" id="imagen"></div>
-<a id="btn2" data-role="button" href="#tema">EMPEZAR</a>
-
-</div>
-
-<div data-role="page" id="tema">
-
-    <h1 id="tituloTema" data-role="header"></h1>
+        </script>
+    </head>
+    <body>
     
-    <div data-role="fieldcontain" id="cerebrosDone">
-    	<img id="gafas" src="img/gafas.png"/><img id="i0" src="img/cn.png"/><img id="i1" src="img/cn.png"/><img id="i2" src="img/cn.png"/><img id="i3" src="img/cn.png"/>
+   		<div id="titulo" align="center"><img src="img/logo.jpg"/></div>
+        
+        <div data-role="button" id="premenu"><img src="img/menu.png" id="botonMenu"/></div>
+    <div id="menu">
+    		<img data-role="button" class="boton" src="img/inicio_sombra.png" id="botonI"/>
+        	<img data-role="button" class="boton" src="img/neurociencia_sombra.png" id="botonNe"/>
+        	<img data-role="button" class="boton" src="img/enfermedades_sombra.png" id="botonE"/>
+            <img data-role="button" class="boton" src="img/multimedia_sombra.png" id="botonM"/>
+            <img data-role="button" class="boton" src="img/recursos_sombra.png" id="botonR"/>
+            <img data-role="button" class="boton" src="img/noticias_sombra.png" id="botonNo"/>            
+            <img data-role="button" class="boton" src="img/anatomia_sombra.png" id="botonA"/>
+            <img data-role="button" class="boton" src="img/contacto_sombra.png" id="botonC"><a href="indexJuego.html" target="_blank"/></img>
+        
     </div>
     
-    <div data-role="fieldcontain" id="cerebroTema">
-    	<img id="imgCere"/>
+    <div data-role="content" id="multimedia" align="center">
+    	<div data-role="listview" id="cab">¿QUÉ QUIERES VER?</div>
+    	<div data-role="listview" id="list">CONFERENCIAS</div>
+        <div data-role="listview" id="list">ATLAS CEREBRAL INTERACTIVO</div>
+        <div data-role="listview" id="list">DOCUMENTALES</div>
+        <div data-role="listview" id="list">ENTREVISTAS</div>
+        <div data-role="listview" id="list">GALERIA</div>
     </div>
     
-    <a id="btn3" data-role="button" href="#quiz" onClick="add()">EMPEZAR</a>
+    <div data-role="content" id="recursos" align="center">
+    	<div data-role="listview" id="cab">¿A QUÉ RECURSO QUIERES ACCEDER?</div>
+    	<div data-role="listview" id="list">LIBROS</div>
+        <div data-role="listview" id="list">MANUALES</div>
+        <div data-role="listview" id="list">CENTROS DE INVESTIGACIÓN</div>
+        <div data-role="listview" id="list">REVISTAS</div>
+        <div data-role="listview" id="list">INSTITUCIONES</div>
+        <div data-role="listview" id="list">PÁGINAS DE INTERES</div>   	
+    </div>
     
-</div>
-
-</body>
+     <div data-role="content" id="enfermedades" align="center">
+    	<div data-role="listview" id="cab">¿A QUÉ ENFERMEDAD QUIERES ACCEDER?</div>
+    	<div data-role="listview" id="list">ALZHEIMER</div>
+        <div data-role="listview" id="list">PARKINSON</div>
+        <div data-role="listview" id="list">AUTISMO</div>
+        <div data-role="listview" id="list">ESQUIZOFRENIA</div>  	
+    </div>
+    
+     <div data-role="content" id="neurociencia" align="center">
+    	<div data-role="listview" id="cab">¿QUÉ QUIERES CONSULTAR?</div>
+    	<div data-role="listview" id="list">RAMAS DE LA NEUROCIENCIA</div>
+        <div data-role="listview" id="list">OBJETIVOS</div>
+        <div data-role="listview" id="list">TÉCNICAS</div>
+        <div data-role="listview" id="list">CONCEPTOS NEUROCIENTÍFICOS</div>  	
+    </div>
+    
+    <div data-role="content" id="anatomia" align="center">
+    	<table>
+        	<tr>
+            	<td><img class="seccion" src="img/sistNervios.00_png_srz" id="botonI"/></td>
+            	<td><img class="seccion" src="img/periferico.00_jpg_srz" id="botonNe"/></td>
+            	<td><img class="seccion" src="img/celulas.00_jpg_srz" id="botonE"/></td>
+            </tr>
+        	<tr>
+            	<td>sistema nervioso central</td>
+            	<td>sistema nervioso periferico</td>
+            	<td>celulas nerviosas</td>            
+            </tr>
+        </table>		
+    		
+    </div>
+    
+    <div id="abajo" align="center">
+    	<img class="botonRS" src="img/facebook.png" id="fb"/>
+        <img class="botonRS" src="img/Twitter.png" id="twitter"/>
+        <img class="botonRS" src="img/revista.png" id="revista"/>
+    </div>
+    
+    
+    
+    </body>
 </html>
