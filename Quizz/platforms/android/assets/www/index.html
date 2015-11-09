@@ -96,7 +96,7 @@
 			$('#resul').append('<h1 data-role="header">CORRECTO</h1>');
 			$('#resul').append('<a href="#juego" onClick="elimRes()" data-role="button">CONTINUAR</h1>');
 			
-			if(document.getElementById("imgCere").getAttribute("src")=="img/0-g.png"){
+			if(document.getElementById("imgCere").getAttribute("src")=="img/0-g.png"){//estos if te dan el cerebro del tema correspondiente si lo aciertas
 				$('#i0').attr("src", "img/0-g.png");
 			}
 			if(document.getElementById("imgCere").getAttribute("src")=="img/1-g.png"){
@@ -114,6 +114,19 @@
 			document.body.removeChild(document.getElementById("quiz"));
 			$('#resul').append('<h1 data-role="header">FALSO</h1>');
 			$('#resul').append('<a href="#juego" onClick="elimRes()" data-role="button">CONTINUAR</h1>');
+			
+			if(document.getElementById("imgCere").getAttribute("src")=="img/0-g.png"){//estos if te quitan el cerebro del tema correspondiente si lo has conseguido, caes de nuevo y fallas
+				$('#i0').attr("src", "img/cn.png");
+			}
+			if(document.getElementById("imgCere").getAttribute("src")=="img/1-g.png"){
+				$('#i1').attr("src", "img/cn.png");
+			}
+			if(document.getElementById("imgCere").getAttribute("src")=="img/2-g.png"){
+				$('#i2').attr("src", "img/cn.png");
+			}
+			if(document.getElementById("imgCere").getAttribute("src")=="img/3-g.png"){
+				$('#i3').attr("src", "img/cn.png");
+			}
 			
 		}
 	}
