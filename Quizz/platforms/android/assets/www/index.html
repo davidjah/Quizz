@@ -11,27 +11,26 @@
 <body onLoad="play()">
 <script>
 	
-	var imagenes=new Array('img/0.png','img/0-g.png','img/1.png','img/1-g.png','img/2.png','img/2-g.png','img/3.png','img/3-g.png');
-	var index;
-	var iAct;
-	var c=0;
+	var imagenes=new Array('img/0.png','img/0-g.png','img/1.png','img/1-g.png','img/2.png','img/2-g.png','img/3.png','img/3-g.png');//array con la imagenes de todos los cerebros.
+	var index;//
 	var i;
-	var preguntas=new Array('pregunta 1','pregunta 2','pregunta 3','pregunta 4');
-	var soluciones=new Array();//este asociativo
-	var opciones=new Array();	
+	var preguntas=new Array('pregunta 1','pregunta 2','pregunta 3','pregunta 4','pregunta 5');//array de preguntas
+	var soluciones=new Array();//array con las soluciones a cada pregunta
+	var opciones=new Array();//array de opciones de respuesta	
 	
-	soluciones['pregunta 1']='v';
-	soluciones['pregunta 2']='v';
-	soluciones['pregunta 3']='v';
-	soluciones['pregunta 4']='v';
+	soluciones['pregunta 1']='a';
+	soluciones['pregunta 2']='b';
+	soluciones['pregunta 3']='c';
+	soluciones['pregunta 4']='d';
+	soluciones['pregunta 5']='e';
 	
-	opciones['pregunta 1']="v,f,f";
-	opciones['pregunta 2']="v,f,f";
-	opciones['pregunta 3']="v,f,f";
-	opciones['pregunta 4']="v,f,f";
+	opciones['pregunta 1']="a,b,c";
+	opciones['pregunta 2']="b,c,d";
+	opciones['pregunta 3']="c,d,e";
+	opciones['pregunta 4']="d,e,f";
+	opciones['pregunta 5']="e,f,g";
 		
     function rotarImagenes(){
-		i=Math.floor(Math.random()*preguntas.length);
         index=Math.floor((Math.random()*imagenes.length)); 
         document.getElementById("imagen").src=imagenes[index];		
     }
@@ -50,7 +49,7 @@
 		
 		refreshPage();
 		rotarImagenes(); 
-		setInterval(rotarImagenes,100);
+		setInterval(rotarImagenes,1000);
 		setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);
 																
 	}	
@@ -82,15 +81,17 @@
 		document.getElementById('btn2').style.display='block';		
 	}
 	
-	function elimRes(){		
+	function elimRes(){
+		
 		document.body.removeChild(document.getElementById("resul"));
+		
 		}
 	
 	
 	function ok(e){
-		preguntas.splice(i,1);//primer numero indica a partir de que indice queremos borrar y el segundo cuantos indices queremos borrar
-		
-		if(e.name==soluciones[""+preguntas[i]]){
+				
+		if(e.name==soluciones[""+$("#preg").html()]){
+			
 			document.body.removeChild(document.getElementById("quiz"));
 			$('#resul').append('<h1 data-role="header">CORRECTO</h1>');
 			$('#resul').append('<a href="#juego" onClick="elimRes()" data-role="button">CONTINUAR</h1>');
@@ -109,6 +110,7 @@
 			}
 					
 		}else{
+			
 			document.body.removeChild(document.getElementById("quiz"));
 			$('#resul').append('<h1 data-role="header">FALSO</h1>');
 			$('#resul').append('<a href="#juego" onClick="elimRes()" data-role="button">CONTINUAR</h1>');
@@ -116,14 +118,19 @@
 		}
 	}
 	
-	function add(){				
-		$('#quiz').append('<h1 data-role="header">'+preguntas[i]+'</h1>');		
+	function add(){//este metodo añade una pregunta aleatoria
+		
+		i=Math.floor(Math.random()*preguntas.length);
+					
+		$('#quiz').append('<h1 id="preg" data-role="header">'+preguntas[i]+'</h1>');		
 		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="1" data-role="button">'+opciones[""+preguntas[i]].split(",")[0]+'</a>');
 		$('#1').attr("name",""+opciones[""+preguntas[i]].split(",")[0]);		
 		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="2" data-role="button">'+opciones[""+preguntas[i]].split(",")[1]+'</a>');
 		$('#2').attr("name",""+opciones[""+preguntas[i]].split(",")[1]);
 		$('#quiz').append('<a onClick="ok(this)" href="#resul" id="3" data-role="button">'+opciones[""+preguntas[i]].split(",")[2]+'</a>');
 		$('#3').attr("name",""+opciones[""+preguntas[i]].split(",")[2]);
+		
+		preguntas.splice(i,1);//primer numero indica a partir de que indice queremos borrar y el segundo cuantos indices queremos borrar
 		
 	}
 	
