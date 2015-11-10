@@ -80,22 +80,27 @@ background-color:#999
 	height:6.5%;
 }
 .boton{
-	width:100%;
-	height:auto;
+	border:none;
+    padding:0;
+    margin:0;
+    width:26.66%;
+    height:auto;
 	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 }
 #botonMenu{
-	float:left;
 	width:6%;
 	height:6%;
 }
 
-.seccion{
-	
+.seccion{	
 	width:80%;
 	height:80%;
+}
+.seccion2{	
+	width:100%;
+	height:100%;
 }
 
 table{
@@ -103,19 +108,36 @@ table{
 	text-align:center;
 }
 
-#menu{
+#capaMenu{
 	display:none;
-	float:left;
-	height:100%;
-	width:20%;
-	margin-left:2%;
+	float:none;
+	margin-top:10%;
+	margin-left:10%;
+	width:80%;
+	height:80%;
+}
+
+#tablaMenu{
+	border:none;
+    padding:0;
+    margin:0;
+    width:100%;
+    height:100%;
+}
+
+
+#capaMenu{	
+	height:auto;
+	width:80%;
+	margin-left:10%;
 	background-color: rgba(0,0,0,0);
 }
+
 #multimedia, #recursos, #enfermedades, #neurociencia, #anatomia{
 	display:none;
 }
 
-/*#cab, #list{
+#cab, #list{
 	font-size:16px;
 	font-weight:bold;
 	margin:0px;
@@ -126,6 +148,7 @@ table{
 }
 
 #cab{
+	color:#FFF;
 	border: 1px solid #000;
 	background: rgba(76,76,76,1);
 background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(44,44,44,1) 50%, rgba(0,0,0,1) 51%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
@@ -148,4 +171,4 @@ background: -ms-linear-gradient(top, rgba(242,246,248,1) 0%, rgba(216,225,231,1)
 background: linear-gradient(to bottom, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 50%, rgba(181,198,208,1) 51%, rgba(224,239,249,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=0 );
 	
-}/*
+}
