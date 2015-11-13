@@ -60,6 +60,11 @@
     <icon gap:platform="winphone" gap:role="background" src="www/res/icon/windows-phone/icon-173-tile.png" />
 
 <gap:plugin name="org.apache.cordova.core.inappbrowser" />
+<plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
+<feature name="InAppBrowser">
+  <param name="android-package" value="org.apache.cordova.InAppBrowser"/>
+</feature>
+<plugin name="InAppBrowser" value="CDVInAppBrowser" /> 
 	
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="www/res/screen/android/screen-ldpi-portrait.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
@@ -73,7 +78,7 @@
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
 	
-    <access origin="*" />
+    <access origin="*" browserOnly="true"/>
     <plugin name="cordova-plugin-whitelist" version="1" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
