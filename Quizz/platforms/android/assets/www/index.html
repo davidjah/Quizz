@@ -33,7 +33,8 @@
 				$('#botonI').click(function(){
 					$('#premenu').show();
 					$('#capaMenu').hide();
-					window.open('http://www.be-brain.org/', '_blank', 'location=yes');
+					navigator.app.loadUrl('http://www.be-brain.org/', {openExternal : true});
+					//window.open('http://www.be-brain.org/', '_blank', 'location=yes');
 				});
 				$('#botonM').click(function(){
 					$('#premenu').show();
