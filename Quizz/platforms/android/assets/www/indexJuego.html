@@ -28,8 +28,7 @@
 	opciones['pregunta 2']="b,c,d";
 	opciones['pregunta 3']="c,d,e";
 	opciones['pregunta 4']="d,e,f";
-	opciones['pregunta 5']="e,f,g";
-	
+	opciones['pregunta 5']="e,f,g";	
 	
 	window.onload=function(){		
 		refreshPage();
@@ -37,7 +36,18 @@
 		setInterval(rotarImagenes,1000);
 		setInterval(function(){$('#contImg').animate({marginLeft:"+=30px"},100).animate({marginLeft:"-=30px"},100)},10);																	
 		}
-	
+		
+	/*bloqueo atras*/
+	document.addEventListener("deviceready", onDeviceReady, false); 
+	function onDeviceReady() { 
+		document.addEventListener("backbutton", onBackKeyDown, false); 
+		
+		} 
+		
+	function onBackKeyDown() { 
+		alert('Back button clicked!'); 
+	}
+	/*bloqueo atras*/
 		
     function rotarImagenes(){
         index=Math.floor((Math.random()*imagenes.length)); 
